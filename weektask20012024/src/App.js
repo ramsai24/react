@@ -4,7 +4,8 @@ import SideNav from "./components/sideNav";
 import { AddCompanyBtn } from "./components/addCompany/addCompany.js";
 import { CardsContainer } from "./components/cardContainer/cardsContainer.js";
 import { Search } from "./components/search/search.js";
-import { dataArrObj, onSearch, onAdd } from "./javascript";
+import { Pagination } from "./components/paginationButton/pagination.js";
+import { dataArrObj, onSearch, onAdd, dateList, newed } from "./javascript";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <AddCompanyBtn onAdd={onAdd} />
             <Search onSearchEl={onSearch} />
             <CardsContainer dataArrObj={dataArrObj} />
+            <Pagination newData={dateList} onData={newed} />
           </div>
         </div>
       </div>
