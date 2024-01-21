@@ -1,0 +1,22 @@
+.search-container {
+  padding: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  /* border: 1px solid green; */
+}
+
+.input-search-element {
+  flex-grow: 1;
+  height: 38px;
+  padding-left: 18px;
+  border-color: lightgrey;
+  outline: none;
+}
+
+.seach {
+  /* border-radius: none !important; */
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}

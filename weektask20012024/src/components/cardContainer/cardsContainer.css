@@ -1,0 +1,11 @@
+.cards-container {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 500px;
+  border: 1px solid yellow;
+  padding-left: 0px;
+}

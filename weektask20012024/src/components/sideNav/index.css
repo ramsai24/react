@@ -1,0 +1,14 @@
+.side-nav {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 3vw;
+  background-color: white;
+}
+
+.side-nav-icon {
+  margin: 10px;
+  margin-top: 16px;
+  font-size: 16px;
+  /* font-weight: 500; */
+}

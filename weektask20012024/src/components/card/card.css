@@ -1,0 +1,17 @@
+.card-item {
+  background-color: #fff;
+  /* padding: 12px; */
+  border-radius: 4px;
+  width: 280px;
+  margin: 12px;
+}
+
+.card-heading {
+  padding: 12px;
+  font-size: 18px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.card-para {
+  padding: 12px;
+}

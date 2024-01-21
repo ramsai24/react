@@ -1,0 +1,29 @@
+.red-col,
+.sunred-col,
+.green-col {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  /* border: 1px solid black; */
+  margin: 4px;
+}
+
+.red-col {
+  background-color: #ff605c;
+}
+
+.sunred-col {
+  background-color: #ffbd44;
+}
+
+.green-col {
+  background-color: #00ca4e;
+}
+
+.apple-task-bar {
+  padding: 10px;
+  display: flex;
+  /* padding: 12px; */
+  /* border: 1px solid; */
+  margin: 0px;
+}
