@@ -13,7 +13,8 @@
 
 .delete-confirmation-container {
   /* position: absolute; */
-  background-color: bisque;
+  /* background-color: bisque; */
+  background-color: #fff;
   /* top: 40%; */
   /*  */
   width: 300px;
@@ -52,7 +53,7 @@
   padding-right: 12px;
   margin: 3px;
   margin-right: 8px;
-  color: #fff;
+  color: #000;
   outline: none;
   border: 1px solid #000;
   font-size: 14px;

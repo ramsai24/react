@@ -13,11 +13,21 @@ export class Notification extends Component {
   //   };
   // }
 
-  state = { isDimissAll: true, isDeleteCnfDialog: false };
+  state = { isDimissAll: true, isDeleteCnfDialog: false, deleteId: "" };
 
-  makeNotificationListUpdate = (event) => {
+  makeNotificationListUpdate = (id) => {
     const { updateNotificationList } = this.props;
-    updateNotificationList(event.target.id);
+    console.log(id);
+    updateNotificationList(id);
+    this.setState({ isDeleteCnfDialog: false });
+  };
+
+  deleteCnfDialogON = (event) => {
+    this.setState({ isDeleteCnfDialog: true, deleteId: event.target.id });
+  };
+
+  deleteCnfDialogOff = () => {
+    this.setState({ isDeleteCnfDialog: false });
   };
 
   renderBasedOnAddedOrDeleted = (name, status, id) => {
@@ -52,7 +62,7 @@ export class Notification extends Component {
                 fill="currentColor"
                 className="bi bi-x"
                 viewBox="0 0 16 16"
-                onClick={this.makeNotificationListUpdate}
+                onClick={this.deleteCnfDialogON}
                 id={id}
               >
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
@@ -92,7 +102,7 @@ export class Notification extends Component {
                 fill="currentColor"
                 className="bi bi-x"
                 viewBox="0 0 16 16"
-                onClick={this.makeNotificationListUpdate}
+                onClick={this.deleteCnfDialogON}
                 id={id}
               >
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
@@ -120,7 +130,9 @@ export class Notification extends Component {
     // ];
     const { notificationList, dismissNotificationPanel } = this.props;
     // console.log(notificationList);
-    const { isDimissAll, isDeleteCnfDialog } = this.state;
+    const { isDimissAll, isDeleteCnfDialog, deleteId } = this.state;
+
+    // const { makeNotificationListUpdate } = this.props;
 
     return (
       // <div>
@@ -128,7 +140,13 @@ export class Notification extends Component {
       //   <p>It is Group is Deleted</p>
       // </div>
       <div className="notifications-container">
-        {isDeleteCnfDialog && <DeleteConformation />}
+        {isDeleteCnfDialog && (
+          <DeleteConformation
+            deleteId={deleteId}
+            deleteCnfDialogOff={this.deleteCnfDialogOff}
+            makeNotificationListUpdate={this.makeNotificationListUpdate}
+          />
+        )}
 
         <div className="notification-header-container">
           <h3>Notifications</h3>
@@ -139,7 +157,7 @@ export class Notification extends Component {
             fill="currentColor"
             className="bi bi-x"
             viewBox="0 0 16 16"
-            style={{ "padding-bottom": "3px" }}
+            style={{ paddingBottom: "3px" }}
             onClick={dismissNotificationPanel}
           >
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
@@ -154,12 +172,12 @@ export class Notification extends Component {
               width="16"
               height="16"
               fill="currentColor"
-              style={{ "margin-left": "3px" }}
+              style={{ marginLeft: "3px" }}
               className="bi bi-arrow-right-short"
               viewBox="0 0 16 16"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
               />
             </svg>
@@ -171,7 +189,7 @@ export class Notification extends Component {
           >
             Dismiss all
             <i
-              style={{ "margin-left": "5px" }}
+              style={{ marginLeft: "5px" }}
               className="fa-solid fa-chevron-down"
             ></i>
           </button>

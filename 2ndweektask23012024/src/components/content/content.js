@@ -94,6 +94,10 @@ export class ContentTable extends Component {
     this.setState((prev) => ({ isView: false }));
   };
 
+  onCloseAddDialog = () => {
+    this.setState((prev) => ({ isAddToggle: false }));
+  };
+
   onDelete = (id) => {
     // console.log(id);
     const { updateDeletedNotificationList } = this.props;
@@ -135,6 +139,7 @@ export class ContentTable extends Component {
         {isAddToggle && (
           <Form
             submitFormDetails={this.submitFormDetails}
+            onCloseAddDialog={this.onCloseAddDialog}
             // updateAddedNotificationList={updateAddedNotificationList}
           />
         )}

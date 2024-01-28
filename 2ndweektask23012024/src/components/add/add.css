@@ -1,0 +1,10 @@
+.add-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

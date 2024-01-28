@@ -1,6 +1,6 @@
 .notifications-container {
   /* border: 6px solid darkmagenta; */
-  box-shadow: 3px 3px 4px 5px lightblue inset;
+  box-shadow: 3px 3px 4px 1px lightgray inset;
   /* padding: 12px; */
   width: 600px;
   display: flex;

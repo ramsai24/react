@@ -1,6 +1,12 @@
 import "./deleteConformation.css";
 
-export const DeleteConformation = () => {
+export const DeleteConformation = (props) => {
+  const { makeNotificationListUpdate, deleteCnfDialogOff, deleteId } = props;
+
+  const eventTrigger = () => {
+    console.log("triggered");
+    makeNotificationListUpdate(deleteId);
+  };
   return (
     <div className="delete-confirmation-container-tranparent-back">
       <div className="delete-confirmation-container">
@@ -9,10 +15,14 @@ export const DeleteConformation = () => {
           Are you sure you want to permently delete this event?
         </p>
         <div>
-          <button type="button" className="cnf-btn">
+          <button type="button" className="cnf-btn" onClick={eventTrigger}>
             Confirm Delete
           </button>
-          <button type="button" className="back-btn">
+          <button
+            type="button"
+            className="back-btn"
+            onClick={deleteCnfDialogOff}
+          >
             Go Back
           </button>
         </div>
