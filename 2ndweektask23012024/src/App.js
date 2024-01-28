@@ -126,6 +126,7 @@ class App extends Component {
       <div>
         <div className="App">
           <TopBar
+            isNotification={isNotification}
             isSideNavToggle={this.isSideNavOffOrOn}
             isNotificationToggle={this.isNOtificationOffOrOn}
           />

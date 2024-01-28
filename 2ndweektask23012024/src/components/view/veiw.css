@@ -8,3 +8,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.view-btn:hover {
+  background-color: #000;
+  color: #fff;
+  padding: 3px;
+  border-radius: 3px;
+}

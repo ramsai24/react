@@ -3,5 +3,19 @@
   /* align-self: flex-start; */
   width: 10vw;
 
-  height: 90vh;
+  height: 100%;
+  padding-top: 12px;
+  padding-left: 12px;
+}
+
+.side-nav-list-item {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 12px;
+  color: gray;
+}
+
+.logo-of-side-nav {
+  width: 16px;
+  margin-right: 6px;
 }

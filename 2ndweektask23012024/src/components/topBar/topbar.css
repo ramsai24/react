@@ -1,21 +1,116 @@
 .topbar-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  border: 1px solid orange;
-  padding: 18px;
+  align-items: center;
+  /* border: 6px solid orange; */
+  /* padding: 12px; */
   width: 100%;
+  background-color: blue;
+  color: #ffffff;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  /* padding-top: 0px; */
+  height: 50px;
 }
 
 .search-container {
-  border: 1px solid red;
-  padding: 4px;
+  margin: 6px;
+  background-color: #00bcd4;
+  /* border: 1px solid red; */
+  /* padding: 4px; */
+  width: 800px;
+  height: 25px;
+  border-radius: 6px;
+  /* padding-top: 12px; */
+  padding-left: 12px;
+  margin-top: 8px;
+}
+
+#searchEl {
+  color: #ffffff;
+  width: 96%;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  /* margin-bottom: 12px; */
+  margin-left: 12px;
 }
 .notification-profile-container {
-  width: 60px;
+  /* align-self: stretch; */
+  height: 100%;
+  width: 90px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  border: 1px solid saddlebrown;
-  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid yellow; */
+  /* padding: 12px; */
+  /* padding: 6px; */
+  /* padding-top: 12px; */
+  padding-left: 12px;
+  position: relative;
+
+  padding-bottom: 0px;
+  margin-bottom: 0px !important;
+}
+
+.notification-icon,
+.profile-user-icon {
+  /* display: inline-block; */
+  margin-right: 12px;
+  height: 100%;
+  /* border: 1px solid; */
+  padding-top: 12px;
+  padding-bottom: 0px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  width: 40px;
+  text-align: center;
+}
+
+.notification-icon-white {
+  background-color: #ffffff;
+  color: #000;
+}
+
+.side-nav-toggle {
+  padding: 6px;
+  padding-top: 12px;
+  padding-left: 12px;
+}
+
+.microsoft-azure {
+  margin-left: 30px;
+  font-weight: 700;
+}
+
+.user-navbar {
+  position: absolute;
+  background-color: salmon;
+  padding: 4px;
+  top: 48px;
+  right: 2px;
+  visibility: hidden;
+  z-index: 1;
+}
+
+/* .profile-user-icon {
+  background-color: salmon;
+} */
+
+/* .notification-profile-container:hover > .user-navbar {
+  visibility: visible;
+} */
+
+/* .notification-profile-container:hover > .profile-user-icon {
+  background-color: salmon;
+}*/
+
+.profile-user-icon:hover + .user-navbar {
+  visibility: visible;
+}
+
+.user-navbar:hover {
+  visibility: visible;
 }

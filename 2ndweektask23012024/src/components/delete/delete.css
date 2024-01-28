@@ -9,6 +9,13 @@
   align-items: center;
 }
 
+.delete-btn:hover {
+  background-color: #000;
+  color: #fff;
+  padding: 3px;
+  border-radius: 3px;
+}
+
 .span-El {
   font-size: 8px !important;
   /* text-align: center !important; */

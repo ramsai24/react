@@ -4,7 +4,7 @@ export const DeleteConformation = (props) => {
   const { makeNotificationListUpdate, deleteCnfDialogOff, deleteId } = props;
 
   const eventTrigger = () => {
-    console.log("triggered");
+    // console.log("triggered");
     makeNotificationListUpdate(deleteId);
   };
   return (
