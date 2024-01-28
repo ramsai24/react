@@ -1,12 +1,38 @@
-.success-container {
-  background-color: blueviolet;
-  position: fixed;
+.success-bg-container-black-trans {
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.56);
+  margin: 0px;
+  /* height: 100%; */
+  width: 360px;
+  text-align: center;
+  /* padding: 14px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 12px;
   right: 12px;
+}
+
+.success-container {
+  position: relative;
+  bottom: 9px;
+  left: 9px;
+  text-align: left;
+
+  background-color: #ffffff;
+  /* position: fixed;
+  top: 12px;
+  right: 12px; */
+  width: 100%;
+  padding: 12px;
+  box-shadow: 2px 2px 4px lightgray inset;
 }
 
 .close-btn {
   position: absolute;
   top: 8px;
   right: 12px;
+  background-color: transparent;
+  outline: none;
+  border: none;
 }

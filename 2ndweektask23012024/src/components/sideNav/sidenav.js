@@ -30,7 +30,7 @@ export const Sidenav = () => {
       <li className="side-nav-list-item">
         <img
           className="logo-of-side-nav"
-          src="https://res.cloudinary.com/daoquetki/image/upload/v1706450660/2NDWEEKTASK-REACT/rxarhyg5kczkgdik47gu.png"
+          src="https://res.cloudinary.com/daoquetki/image/upload/v1706450660/2NDWEEKTASK-REACT/rxarhyg5kczkgdik47gu.png "
           alt="logo"
         />
         Help
