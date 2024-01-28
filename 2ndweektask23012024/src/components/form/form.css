@@ -1,0 +1,15 @@
+.form-container {
+  background-color: lightsalmon;
+  position: absolute;
+  border: 3px solid;
+  margin: 12px;
+  padding: 12px;
+  z-index: 1;
+}
+
+.input-label-container {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}

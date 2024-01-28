@@ -1,3 +1,19 @@
+.pagination-btns {
+  /* border: 1px solid; */
+  align-self: flex-start;
+  width: 100%;
+}
+
 .page-btn {
   margin: 10px;
+  padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
+  outline: none;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.color-red {
+  background-color: red;
 }

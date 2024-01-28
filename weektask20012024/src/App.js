@@ -5,7 +5,16 @@ import { AddCompanyBtn } from "./components/addCompany/addCompany.js";
 import { CardsContainer } from "./components/cardContainer/cardsContainer.js";
 import { Search } from "./components/search/search.js";
 import { Pagination } from "./components/paginationButton/pagination.js";
-import { dataArrObj, onSearch, onAdd, dateList, newed } from "./javascript";
+import {
+  dataArrObj,
+  onSearch,
+  onAdd,
+  dateList,
+  newed,
+  rightArrow,
+  leftArrow,
+  onSearchBtn,
+} from "./javascript";
 import "./App.css";
 
 function App() {
@@ -17,9 +26,17 @@ function App() {
         <div className="content-container">
           <div className="components">
             <AddCompanyBtn onAdd={onAdd} />
-            <Search onSearchEl={onSearch} />
+            <Search onSearchEl={onSearch} onSearchBtn={onSearchBtn} />
             <CardsContainer dataArrObj={dataArrObj} />
-            <Pagination newData={dateList} onData={newed} />
+            <div className="pagination-container">
+              <button className="page-btn" type="button" onClick={leftArrow}>
+                <i className="fa-solid fa-chevron-left"></i>
+              </button>
+              <Pagination newData={dateList} onData={newed} />
+              <button className="page-btn" type="button" onClick={rightArrow}>
+                <i className="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,120 @@
+.notifications-container {
+  /* border: 6px solid darkmagenta; */
+  box-shadow: 3px 3px 4px 5px lightblue inset;
+  /* padding: 12px; */
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.notification-panel {
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.no-event-head {
+  animation: bounce 4s infinite;
+}
+
+/* @bounce{
+    
+} */
+
+.notification-header-container {
+  /* border: 3px solid darkolivegreen; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+
+.notification-dismiss-all-container {
+  padding: 12px;
+  margin-top: 40px;
+  /* border: 3px solid darkgoldenrod; */
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #0081b4;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.more-events-heading {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dimiss-btn {
+  color: #0081b4;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-bottom: 8px;
+  font-weight: 500;
+}
+.list-item-container {
+  align-self: flex-start;
+  width: 100%;
+  padding-left: 0px;
+  padding: 12px;
+  /* margin: 0px; */
+  /* border: 1px solid rebeccapurple; */
+  overflow: auto;
+}
+.notification-item-container {
+  width: 100%;
+  /* border: 4px solid sandybrown; */
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  /* padding: 12px; */
+  /* margin: 10px; */
+}
+.message-close-time-container {
+  width: 100%;
+  display: flex;
+}
+.checked-message-container {
+  /* border: 1px solid green; */
+  width: 75%;
+}
+
+.message-top-heading {
+  font-weight: 500;
+  color: #537fe7;
+}
+
+.message-top-para {
+  font-weight: 400;
+  padding-left: 8px;
+
+  font-size: 12px;
+}
+
+.close-time-container {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+  /* border: 1px solid red; */
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.time-spanEl {
+  /* display: inline-block; */
+  font-weight: 600;
+  font-size: 10px;
+  /* border: 1px solid yellow; */
+}

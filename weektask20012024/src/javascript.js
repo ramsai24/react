@@ -9,12 +9,13 @@ export let btn = [[]];
 
 export let newArray = [];
 
-console.log(dateList);
+// console.log(dateList);
 
 let paginationBtnContainer = document.querySelector(".pagination-btns");
 
 function createAndAppend(inputValue) {
   let cardsContainer = document.querySelector("#cardsContainer");
+  // cardsContainer.textContent = "";
 
   let newCard = document.createElement("li");
   newCard.classList.add("card-item");
@@ -30,7 +31,7 @@ function createAndAppend(inputValue) {
   para.textContent = inputValue;
   para.classList.add("card-para");
   newCon.appendChild(para);
-  console.log(cardsContainer);
+  // console.log(cardsContainer);
   //   let liEl = document.querySelectorAll(".cardsContainer li");
   //   console.log(liEl);
 }
@@ -56,20 +57,38 @@ for (let each of dateList) {
 
 // addObject();
 
-console.log(dataArrObj);
+// console.log(dataArrObj);
 
 export const onSearch = (event) => {
-  // let cardsContainer = document.querySelector("#cardsContainer");
-  // cardsContainer.textContent = "";
-  //   console.log(event.target.value);
-  // let onsearchValue = event.target.value;
-  //   console.log(dateList);
-  // for (let each of dateList) {
-  // console.log(each);
-  // if (each.toUpperCase().includes(onsearchValue.toUpperCase())) {
-  // createAndAppend(each);
-  // }
-  // }
+  // console.log("event trigggerd");
+  let cardsContainer = document.querySelector("#cardsContainer");
+  cardsContainer.textContent = "";
+  // console.log(event.target.value);
+  let onsearchValue = event.target.value;
+  // console.log(dateList);
+  for (let each of dateList) {
+    // console.log(each);
+    if (each.toUpperCase().includes(onsearchValue.toUpperCase())) {
+      createAndAppend(each);
+    }
+  }
+};
+
+export const onSearchBtn = (event) => {
+  // console.log("event trigggerd");
+  let cardsContainer = document.querySelector("#cardsContainer");
+  cardsContainer.textContent = "";
+  // console.log(event.target.value);
+  let onsearchBtnValue = document.getElementById("inputEl").value;
+  // console.log(onsearchBtnValue);
+  // console.log(dateList);
+  for (let each of dateList) {
+    // console.log(each);
+    if (each.toUpperCase().includes(onsearchBtnValue.toUpperCase())) {
+      // console.log(each);
+      createAndAppend(each);
+    }
+  }
 };
 
 export let newValuesDataList = (dataList) => {
@@ -86,15 +105,15 @@ export const onAdd = (event) => {
   count += 1;
 
   let inputEl = document.getElementById("inputEl");
-  console.log(inputEl.value);
+  // console.log(inputEl.value);
   // dateList.push(inputEl.value);
   let valueSearch = inputEl.value;
   // console.log(dateList);
 
   if (newArray.length === 0) {
-    console.log("datelist triggerd");
+    // console.log("datelist triggerd");
     if (dateList.length >= 9) {
-      console.log("if excute");
+      // console.log("if excute");
       newArray = [[...dateList]];
       //  console.log(array[array.length - 1])
       // if (array.length <= 9) {
@@ -113,13 +132,19 @@ export const onAdd = (event) => {
       //     array[array.length - 1].push(valueSearch)
       // }
     } else {
-      console.log("else excute");
+      // paginationBtnContainer.textContent = "";
+      let cardsContainer = document.querySelector("#cardsContainer");
+      cardsContainer.textContent = "";
+      // console.log("else excute");
       dateList.push(valueSearch);
-      console.log(dateList);
+      // console.log(dateList);
+      for (let el of dateList) {
+        createAndAppend(el);
+      }
     }
     // dateList = [...newArray];
   } else {
-    console.log("newArray Triggered");
+    // console.log("newArray Triggered");
     if (newArray[newArray.length - 1].length >= 9) {
       newArray.push([valueSearch]);
     } else {
@@ -129,7 +154,7 @@ export const onAdd = (event) => {
   }
 
   // console.log(array)
-  console.log(newArray);
+  // console.log(newArray);
   // console.log(dateList);
 
   // if (type(dateList[0] === Array)) {
@@ -148,18 +173,22 @@ export const onAdd = (event) => {
   }
   let cnt = 0;
   if (newArray.length >= 1) {
+    let cardsContainer = document.querySelector("#cardsContainer");
+
     for (let each of newArray) {
       cnt += 1;
-      console.log(each);
+      // console.log(cnt - 1);
+      // console.log(each);
       let newButton = document.createElement("button");
       newButton.setAttribute("key", `button${count}`);
-      newButton.id = `button${count}`;
+      newButton.id = cnt + "button";
       newButton.setAttribute("type", "button");
       newButton.textContent = cnt;
       newButton.classList.add("page-btn");
       newButton.onclick = function () {
-        for (let eachCard of dateList[cnt - 1]) {
-          console.log(eachCard);
+        // cardsContainer.textContent = "";
+        for (let eachCard of newArray[cnt - 1]) {
+          // console.log(eachCard);
           createAndAppend(eachCard);
         }
       };
@@ -167,12 +196,56 @@ export const onAdd = (event) => {
     }
   }
 
-  // let allPageBtn = document.querySelectorAll(".page-btn");
-  // // console.log(allPageBtn);
+  let allPageBtn = document.querySelectorAll(".page-btn");
+  // console.log(allPageBtn);
+  // console.log(allPageBtn.length);
+
+  for (let eachBtn of allPageBtn) {
+    // console.log(eachBtn);
+  }
+  if (newArray.length > 0) {
+    for (let c = 1; c <= allPageBtn.length - 2; c++) {
+      // console.log(c);
+      let paginationEvent = document.getElementById(`${c}button`);
+
+      // console.log(paginationEvent);
+      paginationEvent.onclick = function () {
+        let cardsContainer = document.querySelector("#cardsContainer");
+        paginationEvent.classList.add("color-red");
+        let allPageBtn = document.querySelectorAll(".page-btn");
+        console.log(allPageBtn);
+        for (let remove of allPageBtn) {
+          // console.log(remove.id);
+          if (remove.id !== `${c}button`) {
+            console.log(remove.id);
+            let removeColor = document.getElementById(remove.id);
+            console.log(removeColor);
+            // removeColor.classList.remove("color-red");
+          }
+        }
+        cardsContainer.textContent = "";
+        // console.log(newArray[c - 1]);
+        for (let element of newArray[c - 1]) {
+          // console.log(element);
+
+          createAndAppend(element);
+        }
+      };
+    }
+  }
+
   // for (let eachBtn of allPageBtn) {
   //   // console.log(eachBtn.id);
-  //   let eventPageBtn = document.querySelector(`#${eachBtn.id}`);
-  //   console.log(eventPageBtn);
+  //   console.log(eachBtn);
+
+  //   // let eventPageBtn = document.querySelector(`#${eachBtn.id}`);
+  //   // console.log(eventPageBtn);
+  //   // eventPageBtn.onclick = function () {
+  //   //   for (let eachCard of newArray[eachBtn.id]) {
+  //   //     console.log(eachCard);
+  //   //     createAndAppend(eachCard);
+  //   //   }
+  //   // };
   // }
 
   //   //--------------before pagination------------
@@ -242,3 +315,54 @@ export const onAdd = (event) => {
 };
 
 // cl();
+
+// let allPageBtn = document.querySelectorAll(".page-btn");
+// console.log(allPageBtn);
+
+// for (let but of allPageBtn) {
+//   but.onclick = function (event) {
+//     console.log(but);
+//   };
+// }
+
+let arrowCount = 0;
+
+export const rightArrow = () => {
+  if (newArray.length > 0) {
+    arrowCount += 1;
+
+    if (arrowCount >= newArray.length) {
+      arrowCount = newArray.length - 1;
+    }
+    // if (arrowCount <= newArray.length){
+    let cardsContainer = document.querySelector("#cardsContainer");
+
+    cardsContainer.textContent = "";
+
+    let presentArrow = newArray[arrowCount];
+
+    for (let eachItem of presentArrow) {
+      createAndAppend(eachItem);
+    }
+
+    // }
+  }
+};
+
+export const leftArrow = () => {
+  arrowCount -= 1;
+  if (newArray.length > 0) {
+    if (arrowCount <= 0) {
+      arrowCount = 0;
+    }
+    let cardsContainer = document.querySelector("#cardsContainer");
+
+    cardsContainer.textContent = "";
+
+    let presentArrow = newArray[arrowCount];
+
+    for (let eachItem of presentArrow) {
+      createAndAppend(eachItem);
+    }
+  }
+};

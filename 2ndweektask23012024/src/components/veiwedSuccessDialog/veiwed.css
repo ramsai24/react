@@ -1,0 +1,12 @@
+.success-container {
+  background-color: blueviolet;
+  position: fixed;
+  top: 12px;
+  right: 12px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
