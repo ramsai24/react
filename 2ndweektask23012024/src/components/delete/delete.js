@@ -1,10 +1,11 @@
 import "./delete.css";
 
 export const Delete = (props) => {
-  const { onDelete, id } = props;
+  const { onDelete, id, deleteCnfInContentOn } = props;
 
-  const onDeleteId = () => {
-    onDelete(id);
+  const onDeleteId = (deleteId) => {
+    // onDelete(deleteId);
+    deleteCnfInContentOn();
   };
   return (
     <button type="button" className="delete-btn" onClick={onDeleteId}>

@@ -1,18 +1,12 @@
 import "./deleteConformation.css";
 
-export const DeleteConformation = (props) => {
-  const {
-    makeNotificationListUpdate,
-    deleteCnfDialogOff,
-    // onCloseDeletedDialog,
-    // onDelete,
-    deleteId,
-  } = props;
+export const DeleteConformations = (props) => {
+  const { deleteCnfInContentOff, onDelete, id } = props;
 
   const eventTrigger = () => {
     // console.log("triggered");
-    makeNotificationListUpdate(deleteId);
-    // onDelete();
+
+    onDelete(id);
   };
   return (
     <div className="delete-confirmation-container-tranparent-back">
@@ -28,7 +22,7 @@ export const DeleteConformation = (props) => {
           <button
             type="button"
             className="back-btn"
-            onClick={deleteCnfDialogOff}
+            onClick={deleteCnfInContentOff}
           >
             Go Back
           </button>

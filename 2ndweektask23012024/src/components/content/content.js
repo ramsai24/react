@@ -2,6 +2,7 @@ import { Component } from "react";
 import { AddedSuccess } from "../addedSuccessRightTopCornerDialog/added";
 import { DeletedDialog } from "../deletedTopRightCornerDialog/deleted";
 import { ViewDetails } from "../viewDetails/viewDetails";
+import { DeleteConformations } from "../deleteConformationDialogInContent/deleteConformation";
 import { View } from "../view/veiw";
 import { Add } from "../add/add";
 import { Delete } from "../delete/delete";
@@ -34,6 +35,8 @@ export class ContentTable extends Component {
     viewDetails: "",
     isDeleted: false,
     deletedItem: "",
+    isDeletedConf: true,
+    deleteId: "",
   };
 
   onViewDetails = (id) => {
@@ -54,6 +57,15 @@ export class ContentTable extends Component {
     this.setState((prev) => ({
       isAddToggle: true,
     }));
+  };
+
+  deleteCnfInContentOff = () => {
+    this.setState({ isDeletedConf: false });
+  };
+
+  deleteCnfInContentOn = (event) => {
+    console.log(event.target.id);
+    // this.setState({ isDeletedConf: true, deleteId: event.target.id });
   };
 
   submitFormDetails = (p) => {
@@ -130,12 +142,24 @@ export class ContentTable extends Component {
       isView,
       isDeleted,
       deletedItem,
+      isDeletedConf,
+      deleteId,
     } = this.state;
     // console.log(contentList);
     // console.log(isSuccessName);
     // const { updateAddedNotificationList } = this.props;
+    console.log(deleteId);
     return (
       <div className="content-container">
+        {isDeletedConf && (
+          <DeleteConformations
+            deleteId={deleteId}
+            deleteCnfInContentOff={this.deleteCnfInContentOff}
+            // onCloseDeletedDialog={this.onCloseDeletedDialog}
+            onDelete={this.onDelete}
+            deleteCnfInContentOff={this.deleteCnfInContentOff}
+          />
+        )}
         {isAddToggle && (
           <Form
             submitFormDetails={this.submitFormDetails}
@@ -167,7 +191,11 @@ export class ContentTable extends Component {
                 <td className="action-column">
                   <Add onAdd={this.onAdd} />
                   <View onViewDetails={this.onViewDetails} id={each.id} />
-                  <Delete onDelete={this.onDelete} id={each.id} />
+                  <Delete
+                    onCloseDeletedDialog={this.onCloseDeletedDialog}
+                    deleteCnfInContentOn={this.deleteCnfInContentOn}
+                    id={each.id}
+                  />
                 </td>
               </tr>
             ))}
