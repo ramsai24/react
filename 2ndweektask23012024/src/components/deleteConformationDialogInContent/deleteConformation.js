@@ -1,12 +1,11 @@
 import "./deleteConformation.css";
 
 export const DeleteConformations = (props) => {
-  const { deleteCnfInContentOff, onDelete, id } = props;
+  const { deleteCnfInContentOff, onDelete, deleteId } = props;
 
   const eventTrigger = () => {
-    // console.log("triggered");
-
-    onDelete(id);
+    console.log("triggered");
+    onDelete(deleteId);
   };
   return (
     <div className="delete-confirmation-container-tranparent-back">

@@ -1,14 +1,15 @@
 import "./delete.css";
 
 export const Delete = (props) => {
-  const { onDelete, id, deleteCnfInContentOn } = props;
+  const { id, deleteCnfInContentOn, updateDeleteId } = props;
 
-  const onDeleteId = (deleteId) => {
+  const onDeleteId = () => {
     // onDelete(deleteId);
+    updateDeleteId(id);
     deleteCnfInContentOn();
   };
   return (
-    <button type="button" className="delete-btn" onClick={onDeleteId}>
+    <button id={id} type="button" className="delete-btn" onClick={onDeleteId}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="25"

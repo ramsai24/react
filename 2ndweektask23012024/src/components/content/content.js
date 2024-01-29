@@ -35,7 +35,7 @@ export class ContentTable extends Component {
     viewDetails: "",
     isDeleted: false,
     deletedItem: "",
-    isDeletedConf: true,
+    isDeletedConf: false,
     deleteId: "",
   };
 
@@ -64,8 +64,14 @@ export class ContentTable extends Component {
   };
 
   deleteCnfInContentOn = (event) => {
-    console.log(event.target.id);
-    // this.setState({ isDeletedConf: true, deleteId: event.target.id });
+    // console.log(event);
+    // console.log(event.target.id);
+    this.setState({ isDeletedConf: true });
+  };
+
+  updateDeleteId = (id) => {
+    // console.log(id);
+    this.setState({ deleteId: id });
   };
 
   submitFormDetails = (p) => {
@@ -130,6 +136,8 @@ export class ContentTable extends Component {
     setTimeout(() => {
       this.setState({ isDeleted: false });
     }, 3000);
+
+    this.setState({ isDeletedConf: false });
   };
 
   render() {
@@ -148,7 +156,7 @@ export class ContentTable extends Component {
     // console.log(contentList);
     // console.log(isSuccessName);
     // const { updateAddedNotificationList } = this.props;
-    console.log(deleteId);
+    // console.log(deleteId);
     return (
       <div className="content-container">
         {isDeletedConf && (
@@ -156,8 +164,8 @@ export class ContentTable extends Component {
             deleteId={deleteId}
             deleteCnfInContentOff={this.deleteCnfInContentOff}
             // onCloseDeletedDialog={this.onCloseDeletedDialog}
+
             onDelete={this.onDelete}
-            deleteCnfInContentOff={this.deleteCnfInContentOff}
           />
         )}
         {isAddToggle && (
@@ -192,6 +200,7 @@ export class ContentTable extends Component {
                   <Add onAdd={this.onAdd} />
                   <View onViewDetails={this.onViewDetails} id={each.id} />
                   <Delete
+                    updateDeleteId={this.updateDeleteId}
                     onCloseDeletedDialog={this.onCloseDeletedDialog}
                     deleteCnfInContentOn={this.deleteCnfInContentOn}
                     id={each.id}
