@@ -1,7 +1,7 @@
 .side-nav {
-  /* border: 1px solid pink; */
+  border: 1px solid pink;
   /* align-self: flex-start; */
-  width: 200px;
+  width: 250px;
 
   height: 100%;
   padding-top: 12px;
@@ -15,7 +15,28 @@
   color: gray;
 }
 
+.side-nav-list-item:hover {
+  text-align: center;
+  background-color: beige;
+  padding: 6px;
+  border-radius: 4px;
+}
+
 .logo-of-side-nav {
   width: 16px;
   margin-right: 6px;
+}
+
+.data-storage-head {
+  text-align: left;
+  /* border: 1px solid red; */
+  margin-top: 35px;
+  margin-bottom: 18px;
+}
+
+.side-nav-data-storage-container {
+  padding-left: 0px;
+  margin-top: 12px;
+  /* padding: 12px; */
+  /* border: 1px solid yellowgreen; */
 }

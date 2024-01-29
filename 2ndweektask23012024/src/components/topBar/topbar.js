@@ -37,13 +37,44 @@ export const TopBar = (props) => {
         >
           <i className="fa-regular fa-envelope"></i>
         </span>
+
         <span className="profile-user-icon">
-          <i className="fa-regular fa-user"></i>
+          <span className="user-name-email-details-container">
+            <span className="user-name">Ram Sai</span>
+            <span className="user-email">ramsai24@24.com</span>
+          </span>
+          {/* <i className="fa-regular fa-user"></i> */}
+          <img
+            className="profile-icon-image"
+            src="https://res.cloudinary.com/daoquetki/image/upload/v1706506968/2NDWEEKTASK-REACT/ps7lzvf0mbftnlscg4c3.png"
+            alt="profile"
+          />
         </span>
         <div className="user-navbar">
-          <li>Home</li>
-          <li>Contact Us</li>
-          <li>Log Out</li>
+          <li className="user-nav-list-item">
+            <img
+              className="logo-of-side-nav"
+              src="https://res.cloudinary.com/daoquetki/image/upload/v1706450282/2NDWEEKTASK-REACT/eseufn06oxekojsc2lum.png"
+              alt="logo"
+            />
+            Home
+          </li>
+          <li className="user-nav-list-item">
+            <img
+              className="logo-of-side-nav"
+              src="https://res.cloudinary.com/daoquetki/image/upload/v1706450509/2NDWEEKTASK-REACT/aar50kr6yod8rw1hdcjx.png"
+              alt="logo"
+            />
+            Contact Us
+          </li>
+          <li className="user-nav-list-item">
+            <img
+              className="logo-of-side-nav"
+              src="https://res.cloudinary.com/daoquetki/image/upload/v1706508203/2NDWEEKTASK-REACT/zldl8ve8zmisloxwjqrh.png"
+              alt="logo"
+            />
+            Log Out
+          </li>
         </div>
       </div>
     </div>
