@@ -4,7 +4,7 @@ import { DeletedDialog } from "../deletedTopRightCornerDialog/deleted";
 import { EditDialog } from "../editTopRightCornerDialog/editTopRightCornerDialog";
 import { ViewDetails } from "../viewDetails/viewDetails";
 import { DeleteConformations } from "../deleteConformationDialogInContent/deleteConformation";
-import { EditConformations } from "../editConformationDialogInContent/deleteConformation";
+import { EditConformations } from "../editConformationDialogInContent/editConformationDialogInContent";
 import { View } from "../view/veiw";
 import { FormEdit } from "../formEdit/formEidt";
 import { Edit } from "../edit/edit";
@@ -44,7 +44,8 @@ export class ContentTable extends Component {
     isUpdateDetails: false,
     updateFormDetails: "",
     isEdited: false,
-    isEditConformation: true,
+    isEditConformation: false,
+    revieveEditObjectDetails: "",
   };
 
   onViewDetails = (id) => {
@@ -166,7 +167,8 @@ export class ContentTable extends Component {
 
   submitUpdatedDetails = (updatedObject) => {
     // const {id} = updatedObject
-    // console.log(updatedObject);
+    console.log(updatedObject);
+
     const { contentList } = this.state;
     const { updateEditedNotificationList } = this.props;
     updateEditedNotificationList(updatedObject.name);
@@ -182,11 +184,34 @@ export class ContentTable extends Component {
       contentList: updatedDetailsInContentList,
       isUpdateDetails: false,
       isEdited: true,
+      isEditConformation: false,
     });
 
     setTimeout(() => {
       this.setState({ isEdited: false });
     }, 3000);
+  };
+
+  isEditConformationDialog = () => {
+    // event.preventDefault();
+    this.setState({ isEditConformation: true, isUpdateDetails: false });
+  };
+
+  //   partiallyCloseForm = () => {
+  //     this.setState({ isUpdateDetails: false });
+  //   };
+
+  recieveUpadateObjectDetails = (updatedObject) => {
+    console.log(updatedObject);
+    this.setState({ revieveEditObjectDetails: updatedObject });
+  };
+
+  editCnfInContentOff = () => {
+    this.setState({ isUpdateDetails: true, isEditConformation: false });
+  };
+
+  onCloseEditDialog = () => {
+    this.setState({ isUpdateDetails: false });
   };
 
   render() {
@@ -205,6 +230,7 @@ export class ContentTable extends Component {
       updateFormDetails,
       isEdited,
       isEditConformation,
+      revieveEditObjectDetails,
     } = this.state;
     // console.log(contentList);
     // console.log(isSuccessName);
@@ -212,12 +238,22 @@ export class ContentTable extends Component {
     // console.log(deleteId);
     return (
       <div className="content-container">
-        {isEditConformation && <EditConformations />}
+        {isEditConformation && (
+          <EditConformations
+            submitUpdatedDetails={this.submitUpdatedDetails}
+            revieveEditObjectDetails={revieveEditObjectDetails}
+            updateFormDetails={updateFormDetails}
+            editCnfInContentOff={this.editCnfInContentOff}
+          />
+        )}
         {isUpdateDetails && (
           <FormEdit
+            recieveUpadateObjectDetails={this.recieveUpadateObjectDetails}
+            partiallyCloseForm={this.partiallyCloseForm}
             updateFormDetails={updateFormDetails}
             onCloseEditDialog={this.onCloseEditDialog}
-            submitUpdatedDetails={this.submitUpdatedDetails}
+            // submitUpdatedDetails={this.submitUpdatedDetails}
+            isEditConformationDialog={this.isEditConformationDialog}
           />
         )}
         {/* {<FormEdit onCloseAddDialog={this.onCloseAddDialog} />} */}
@@ -294,6 +330,8 @@ export class ContentTable extends Component {
           <EditDialog
             updateFormDetails={updateFormDetails}
             onCloseSuccessDialog={this.onCloseSuccessDialog}
+            submitUpdatedDetails={this.submitUpdatedDetails}
+            // updateFormDetails={revieveEditObjectDetails}
           />
         )}
       </div>

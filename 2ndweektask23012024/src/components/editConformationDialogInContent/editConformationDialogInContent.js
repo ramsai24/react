@@ -1,11 +1,15 @@
-import "./deleteConformation.css";
+import "./editConformationDialogInContent.css";
 
 export const EditConformations = (props) => {
-  const { deleteCnfInContentOff, onDelete, deleteId } = props;
+  const {
+    editCnfInContentOff,
+    submitUpdatedDetails,
+    revieveEditObjectDetails,
+  } = props;
 
   const eventTrigger = () => {
-    // console.log("triggered");
-    onDelete(deleteId);
+    console.log("triggered");
+    submitUpdatedDetails(revieveEditObjectDetails);
   };
   return (
     <div className="delete-confirmation-container-tranparent-back">
@@ -19,7 +23,7 @@ export const EditConformations = (props) => {
           <button
             type="button"
             className="back-btn"
-            onClick={deleteCnfInContentOff}
+            onClick={editCnfInContentOff}
           >
             Go Back
           </button>

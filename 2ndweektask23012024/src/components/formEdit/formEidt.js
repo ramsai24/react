@@ -12,18 +12,44 @@ export class FormEdit extends Component {
       empId: updateFormDetails[0].empId,
       designation: updateFormDetails[0].designation,
       department: updateFormDetails[0].department,
+      updObj: "",
     };
   }
 
-  updateDetails = (event) => {
+  editCon = (event) => {
     event.preventDefault();
-    const { submitUpdatedDetails, updateFormDetails } = this.props;
+    const { isEditConformationDialog } = this.props;
+    isEditConformationDialog();
+    const {
+      submitUpdatedDetails,
+      updateFormDetails,
+      recieveUpadateObjectDetails,
+    } = this.props;
     const { id } = updateFormDetails[0];
 
     const { name, empId, designation, department } = this.state;
 
     const detailsObj = { name, empId, designation, department, id };
+    recieveUpadateObjectDetails(detailsObj);
+
+    this.setState({ updObj: detailsObj });
+  };
+
+  updateDetails = (event) => {
+    event.preventDefault();
+    const {
+      submitUpdatedDetails,
+      updateFormDetails,
+      recieveUpadateObjectDetails,
+    } = this.props;
+    const { id } = updateFormDetails[0];
+
+    const { name, empId, designation, department } = this.state;
+
+    const detailsObj = { name, empId, designation, department, id };
+    recieveUpadateObjectDetails(detailsObj);
     submitUpdatedDetails(detailsObj);
+    console.log(detailsObj);
     // updateAddedNotificationList([detailsObj], "Added");
   };
 
@@ -44,13 +70,13 @@ export class FormEdit extends Component {
   };
 
   render() {
-    // const { updateFormDetails } = this.props;
     const { onCloseEditDialog } = this.props;
+
     const { name, department, designation, empId } = this.state;
     // console.log(name, department, designation, empId);
     return (
       <div className="form-container-tranparent-back ">
-        <form onSubmit={this.updateDetails} className="form-container">
+        <form onSubmit={this.editCon} className="form-container">
           <div className="input-label-container">
             <label>Emp Id : </label>
             <input
