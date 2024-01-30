@@ -206,8 +206,12 @@ export class ContentTable extends Component {
     this.setState({ revieveEditObjectDetails: updatedObject });
   };
 
-  editCnfInContentOff = () => {
-    this.setState({ isUpdateDetails: true, isEditConformation: false });
+  editCnfInContentOff = (updatedObject) => {
+    this.setState({
+      isUpdateDetails: true,
+      isEditConformation: false,
+      updateFormDetails: [updatedObject],
+    });
   };
 
   onCloseEditDialog = () => {
@@ -236,6 +240,7 @@ export class ContentTable extends Component {
     // console.log(isSuccessName);
     // const { updateAddedNotificationList } = this.props;
     // console.log(deleteId);
+    console.log(updateFormDetails);
     return (
       <div className="content-container">
         {isEditConformation && (

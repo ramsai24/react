@@ -11,6 +11,11 @@ export const EditConformations = (props) => {
     console.log("triggered");
     submitUpdatedDetails(revieveEditObjectDetails);
   };
+
+  const goBack = () => {
+    editCnfInContentOff(revieveEditObjectDetails);
+  };
+
   return (
     <div className="delete-confirmation-container-tranparent-back">
       <div className="delete-confirmation-container">
@@ -20,11 +25,7 @@ export const EditConformations = (props) => {
           <button type="button" className="cnf-btn" onClick={eventTrigger}>
             Confirm Updating...
           </button>
-          <button
-            type="button"
-            className="back-btn"
-            onClick={editCnfInContentOff}
-          >
+          <button type="button" className="back-btn" onClick={goBack}>
             Go Back
           </button>
         </div>
