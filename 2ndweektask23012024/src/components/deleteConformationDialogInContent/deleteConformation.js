@@ -4,7 +4,7 @@ export const DeleteConformations = (props) => {
   const { deleteCnfInContentOff, onDelete, deleteId } = props;
 
   const eventTrigger = () => {
-    console.log("triggered");
+    // console.log("triggered");
     onDelete(deleteId);
   };
   return (

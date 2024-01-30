@@ -1,0 +1,17 @@
+.view-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-btn:hover {
+  background-color: #000;
+  color: #fff;
+  padding: 3px;
+  border-radius: 3px;
+}

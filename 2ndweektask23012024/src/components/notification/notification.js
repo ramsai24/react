@@ -129,7 +129,7 @@ export class Notification extends Component {
     //   ...notificationListDeleted,
     // ];
     const { notificationList, dismissNotificationPanel } = this.props;
-    // console.log(notificationList);
+    console.log(notificationList);
     const { isDimissAll, isDeleteCnfDialog, deleteId } = this.state;
 
     // const { makeNotificationListUpdate } = this.props;

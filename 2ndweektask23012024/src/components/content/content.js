@@ -4,6 +4,8 @@ import { DeletedDialog } from "../deletedTopRightCornerDialog/deleted";
 import { ViewDetails } from "../viewDetails/viewDetails";
 import { DeleteConformations } from "../deleteConformationDialogInContent/deleteConformation";
 import { View } from "../view/veiw";
+import { FormEdit } from "../formEdit/formEidt";
+import { Edit } from "../edit/edit";
 import { Add } from "../add/add";
 import { Delete } from "../delete/delete";
 import { Form } from "../form/form";
@@ -37,6 +39,8 @@ export class ContentTable extends Component {
     deletedItem: "",
     isDeletedConf: false,
     deleteId: "",
+    isUpdateDetails: false,
+    updateFormDetails: "",
   };
 
   onViewDetails = (id) => {
@@ -116,6 +120,19 @@ export class ContentTable extends Component {
     this.setState((prev) => ({ isAddToggle: false }));
   };
 
+  onEditFormON = (id) => {
+    const { contentList } = this.state;
+
+    const updating = contentList.filter((each) => each.id === id);
+
+    this.setState({ isUpdateDetails: true, updateFormDetails: updating });
+  };
+
+  onCloseEditDialog = () => {
+    console.log("event trigger");
+    this.setState({ isUpdateDetails: false });
+  };
+
   onDelete = (id) => {
     // console.log(id);
     const { updateDeletedNotificationList } = this.props;
@@ -140,6 +157,24 @@ export class ContentTable extends Component {
     this.setState({ isDeletedConf: false });
   };
 
+  submitUpdatedDetails = (updatedObject) => {
+    // const {id} = updatedObject
+    // console.log(updatedObject);
+    const { contentList } = this.state;
+
+    const updatedDetailsInContentList = contentList.map((each) => {
+      if (each.id === updatedObject.id) {
+        return { ...updatedObject };
+      }
+      return each;
+    });
+
+    this.setState({
+      contentList: updatedDetailsInContentList,
+      isUpdateDetails: false,
+    });
+  };
+
   render() {
     const {
       contentList,
@@ -152,6 +187,8 @@ export class ContentTable extends Component {
       deletedItem,
       isDeletedConf,
       deleteId,
+      isUpdateDetails,
+      updateFormDetails,
     } = this.state;
     // console.log(contentList);
     // console.log(isSuccessName);
@@ -159,6 +196,14 @@ export class ContentTable extends Component {
     // console.log(deleteId);
     return (
       <div className="content-container">
+        {isUpdateDetails && (
+          <FormEdit
+            updateFormDetails={updateFormDetails}
+            onCloseEditDialog={this.onCloseEditDialog}
+            submitUpdatedDetails={this.submitUpdatedDetails}
+          />
+        )}
+        {/* {<FormEdit onCloseAddDialog={this.onCloseAddDialog} />} */}
         {isDeletedConf && (
           <DeleteConformations
             deleteId={deleteId}
@@ -205,6 +250,7 @@ export class ContentTable extends Component {
                     deleteCnfInContentOn={this.deleteCnfInContentOn}
                     id={each.id}
                   />
+                  <Edit onEditFormON={this.onEditFormON} id={each.id} />
                 </td>
               </tr>
             ))}
