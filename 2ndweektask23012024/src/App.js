@@ -14,6 +14,7 @@ class App extends Component {
     notificationListDeleted: [],
     notificationListAdded: [],
     notificationList: [],
+    notificationListEdited: [],
     status: "",
   };
 
@@ -57,6 +58,24 @@ class App extends Component {
       return {
         notificationListDeleted: [...prev.notificationListDeleted, newAddedObj],
         notificationList: [...prev.notificationList, newAddedObj],
+      };
+    });
+  };
+
+  updateEditedNotificationList = (editedName) => {
+    // console.log(addedName);
+    // console.log(`addedName :- ${addedName}`);
+    let newEditedObj = {
+      name: editedName,
+      editedName,
+      id: v4(),
+      status: "Edited",
+    };
+    // console.log(newAddedObj);
+    this.setState((prev) => {
+      return {
+        notificationListEdited: [...prev.notificationListEdited, newEditedObj],
+        notificationList: [...prev.notificationList, newEditedObj],
       };
     });
   };
@@ -136,6 +155,7 @@ class App extends Component {
             <ContentTable
               updateAddedNotificationList={this.updateAddedNotificationList}
               updateDeletedNotificationList={this.updateDeletedNotificationList}
+              updateEditedNotificationList={this.updateEditedNotificationList}
             />
             {isNotification && (
               <Notification

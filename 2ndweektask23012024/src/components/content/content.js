@@ -1,8 +1,10 @@
 import { Component } from "react";
 import { AddedSuccess } from "../addedSuccessRightTopCornerDialog/added";
 import { DeletedDialog } from "../deletedTopRightCornerDialog/deleted";
+import { EditDialog } from "../editTopRightCornerDialog/editTopRightCornerDialog";
 import { ViewDetails } from "../viewDetails/viewDetails";
 import { DeleteConformations } from "../deleteConformationDialogInContent/deleteConformation";
+import { EditConformations } from "../editConformationDialogInContent/deleteConformation";
 import { View } from "../view/veiw";
 import { FormEdit } from "../formEdit/formEidt";
 import { Edit } from "../edit/edit";
@@ -41,6 +43,8 @@ export class ContentTable extends Component {
     deleteId: "",
     isUpdateDetails: false,
     updateFormDetails: "",
+    isEdited: false,
+    isEditConformation: true,
   };
 
   onViewDetails = (id) => {
@@ -105,7 +109,7 @@ export class ContentTable extends Component {
   };
 
   onCloseSuccessDialog = () => {
-    this.setState((prev) => ({ isSuccess: false }));
+    this.setState((prev) => ({ isSuccess: false, isEdited: false }));
   };
 
   onCloseDeletedDialog = () => {
@@ -125,7 +129,10 @@ export class ContentTable extends Component {
 
     const updating = contentList.filter((each) => each.id === id);
 
-    this.setState({ isUpdateDetails: true, updateFormDetails: updating });
+    this.setState({
+      isUpdateDetails: true,
+      updateFormDetails: updating,
+    });
   };
 
   onCloseEditDialog = () => {
@@ -161,6 +168,8 @@ export class ContentTable extends Component {
     // const {id} = updatedObject
     // console.log(updatedObject);
     const { contentList } = this.state;
+    const { updateEditedNotificationList } = this.props;
+    updateEditedNotificationList(updatedObject.name);
 
     const updatedDetailsInContentList = contentList.map((each) => {
       if (each.id === updatedObject.id) {
@@ -172,7 +181,12 @@ export class ContentTable extends Component {
     this.setState({
       contentList: updatedDetailsInContentList,
       isUpdateDetails: false,
+      isEdited: true,
     });
+
+    setTimeout(() => {
+      this.setState({ isEdited: false });
+    }, 3000);
   };
 
   render() {
@@ -189,6 +203,8 @@ export class ContentTable extends Component {
       deleteId,
       isUpdateDetails,
       updateFormDetails,
+      isEdited,
+      isEditConformation,
     } = this.state;
     // console.log(contentList);
     // console.log(isSuccessName);
@@ -196,6 +212,7 @@ export class ContentTable extends Component {
     // console.log(deleteId);
     return (
       <div className="content-container">
+        {isEditConformation && <EditConformations />}
         {isUpdateDetails && (
           <FormEdit
             updateFormDetails={updateFormDetails}
@@ -271,6 +288,12 @@ export class ContentTable extends Component {
           <DeletedDialog
             deletedItem={deletedItem}
             onCloseDeletedDialog={this.onCloseDeletedDialog}
+          />
+        )}
+        {isEdited && (
+          <EditDialog
+            updateFormDetails={updateFormDetails}
+            onCloseSuccessDialog={this.onCloseSuccessDialog}
           />
         )}
       </div>
