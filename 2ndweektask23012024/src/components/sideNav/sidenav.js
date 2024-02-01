@@ -1,9 +1,15 @@
+import { Add } from "../add/add";
 import "./sidenav.css";
 
-export const Sidenav = () => {
+export const Sidenav = (props) => {
+  const { updateAddFunctionality } = props;
+  const addFun = () => {
+    updateAddFunctionality();
+  };
+
   return (
     <ul className="side-nav">
-      <li className="side-nav-list-item">
+      <li className="side-nav-list-item" onClick={addFun}>
         <img
           className="logo-of-side-nav"
           src="https://res.cloudinary.com/daoquetki/image/upload/v1706505675/2NDWEEKTASK-REACT/tkkwbb1mlmwgn9elchtr.png"

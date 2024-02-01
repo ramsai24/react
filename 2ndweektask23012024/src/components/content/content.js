@@ -218,6 +218,10 @@ export class ContentTable extends Component {
     this.setState({ isUpdateDetails: false });
   };
 
+  addFuntionalilyInSideNav = () => {
+    this.setState({ isAddToggle: true });
+  };
+
   render() {
     const {
       contentList,

@@ -16,6 +16,7 @@ class App extends Component {
     notificationList: [],
     notificationListEdited: [],
     status: "",
+    addFunctionality: "",
   };
 
   isSideNavOffOrOn = () => {
@@ -132,6 +133,11 @@ class App extends Component {
     }));
   };
 
+  updateAddFunctionality = (funti) => {
+    // this.setState({ addFunctionality: funti });
+    console.log("triggered");
+  };
+
   render() {
     const {
       isSideNav,
@@ -151,8 +157,11 @@ class App extends Component {
           />
           <div className="bottom-container">
             {/* <div style={{ border: "1px solid red" }}> */}
-            {isSideNav && <Sidenav />}
+            {isSideNav && (
+              <Sidenav updateAddFunctionality={this.updateAddFunctionality} />
+            )}
             <ContentTable
+              updateAddFunctionality={this.updateAddFunctionality}
               updateAddedNotificationList={this.updateAddedNotificationList}
               updateDeletedNotificationList={this.updateDeletedNotificationList}
               updateEditedNotificationList={this.updateEditedNotificationList}
